@@ -47,7 +47,7 @@ O mesmo irá:
 bash run_experiments.sh
 ```
 
-### 4. Gerando o Gráfico
+### 3. Gerando o Gráfico
 
 Após rodar os experimentos, você pode gerar o gráfico comparativo executando:
 
@@ -64,3 +64,17 @@ Para alterar os parâmetros do experimento basta alterar as variáveis:
 *   `num_consumers`: O número de threads/tasks consumidoras.
 *   `items_to_produce`: O número de itens que cada produtor irá criar.
 *   `buffer_size`: O tamanho máximo do buffer/fila compartilhada.
+
+Para alterar a quantidade de execuções das amostras para fins de comparação, basta alterar o loop em run_experiments.sh
+
+```echo "Executando Experimento de Threads..."
+for i in ->{1..5}<-
+do
+    python3 threads/producer_consumer.py | grep ""Tempo de execucao" | awk '{print $4}' >> results/threads_times.csv
+done
+
+echo "Executando Experimento de Coroutines..."
+for i in ->{1..5}<-
+do
+    python3 coroutines/producer_consumer.py | grep "Tempo de execucao" | awk '{print $4}' >> results/coroutines_times.csv
+done```
