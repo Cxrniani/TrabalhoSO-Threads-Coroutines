@@ -75,4 +75,4 @@ if __name__ == "__main__":
         c.join()
 
     end_time = time.time()
-    print(f"Total execution time: {end_time - start_time:.4f} seconds")
+    print(f"Tempo de execucao: {end_time - start_time:.4f} seconds")
